@@ -3,6 +3,11 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
 
+
+app.get("/", (req, res) => {
+    res.send("🚀 Backend is running successfully!");
+});
+
 const adminRoutes = require('./routes/adminRoutes');
 const consumerRoutes = require('./routes/consumerRoutes');
 const categoryRoutes = require('./routes/categoryRoutes2');
