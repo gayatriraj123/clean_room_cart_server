@@ -24,12 +24,7 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({ 
-    origin: '*',
-    credentials: true,
-    methods: ["get", "post", "PUT", "DELETE"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], 
-    }));
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 
 // Serve static uploads folder

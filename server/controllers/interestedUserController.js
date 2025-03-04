@@ -1,6 +1,6 @@
 const InterestedUser = require("../models/InterestedUser");
 
-// 📌 Add Interested User
+// Add Interested User
 exports.addInterestedUser = async(req, res) => {
     try {
         const { userName, email, phone, product } = req.body;
@@ -18,7 +18,7 @@ exports.addInterestedUser = async(req, res) => {
     }
 };
 
-// 📌 Get All Interested Users
+//  Get All Interested Users
 exports.getInterestedUsers = async(req, res) => {
     try {
         const users = await InterestedUser.find();
