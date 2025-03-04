@@ -25,7 +25,7 @@ exports.addCart = async(req, res) => {
     }
 };
 
-// Get user's cart items
+// ✅ Get user's cart items
 exports.getCart = async(req, res) => {
     try {
         const { userId } = req.params;
@@ -42,7 +42,7 @@ exports.getCart = async(req, res) => {
     }
 };
 
-// Update quantity
+// ✅ Update quantity
 exports.updateQuantity = async(req, res) => {
     try {
         const { userId, productId, size, color } = req.params;
@@ -66,15 +66,15 @@ exports.updateQuantity = async(req, res) => {
 // ✅ Remove item from cart
 exports.deleteCart = async(req, res) => {
     try {
-        const { userId, productId, size, color } = req.params;
+        const { userId, productId } = req.params;
 
         const cart = await Cart.findOne({ userId });
         if (!cart) return res.status(404).json({ message: "Cart not found" });
 
-        cart.items = cart.items.filter(item => !(item.productId.toString() === productId && item.size === size && item.color === color));
+        cart.items = cart.items.filter(item => !(item.productId.toString() === productId));
         await cart.save();
 
-        res.status(200).json({ success: true, cart, message: 'Delete cart item Successfully' });
+        res.status(200).json({ success: true, cart, message: 'Delete cart item successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
